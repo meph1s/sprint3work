@@ -14,5 +14,13 @@ select
     
     extract(week from date_time)::integer
 
-from staging.user_order_log
-group by extract(week from date_time)
+from t1 as(
+    select 
+        count(customer_id) as count_customers,
+        item_id,
+        extract(week from date_time)::integer,
+        sum(case when status = 'shipped' then payment_amount else 0 end),
+        count(case when status = 'refunded' then 1 end)
+    from staging.user_order_log
+    group by extract(week from date_time), item_id
+)
