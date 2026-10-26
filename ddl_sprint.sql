@@ -10,7 +10,7 @@ create table mart.f_customer_retention (
     new_customers_count integer,
     returning_customers_count integer,
     refunded_customer_count integer,
-    period_name date,
+    period_name varchar(20) not null default 'weekly',
     period_id integer,
     item_id integer,
     new_customers_revenue numeric(10, 2),
