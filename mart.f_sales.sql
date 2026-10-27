@@ -1,3 +1,7 @@
+delete from mart.f_sales
+where date_id 
+
+
 insert into mart.f_sales (date_id, item_id, customer_id, city_id, quantity, payment_amount, status)
 select 
 	dc.date_id, 
